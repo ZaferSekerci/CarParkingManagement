@@ -8,10 +8,37 @@ namespace CarParkingManagement
 {
     class ParkingLot
     {
+        public bool CheckAvailability()
+        {
+            if (TotalIncome == MaximumCarCapacity)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public string CapacityCustomerRatio()
+        {
+            if (TotalIncome >= MaximumCarCapacity * 0.5m)
+            {
+                return "red";
+            }
+            else if (TotalIncome >= MaximumCarCapacity * 0.10m)
+            {
+                return "yellow";
+            }
+            else
+            {
+                return "green";
+            }
+        }
+
         public string ParkingLotName { get; set; }
         public decimal TotalIncome { get; set; }
-        public int MaximumCarCapacity { get; set; }
-        public List<Customer> listOfCarsIn = new List<Customer>(); 
+        public decimal MaximumCarCapacity { get; set; }
+        public List<Customer> listOfCarsIn = new List<Customer>();
 
     }
 }

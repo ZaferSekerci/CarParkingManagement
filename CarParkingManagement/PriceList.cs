@@ -9,9 +9,9 @@ namespace CarParkingManagement
     class PriceList
     {
         
-        public PriceList(VehicleClass vehicleClass)
+        public PriceList(Car car)
         {
-            switch (vehicleClass)
+            switch (car.VehicleClass)
             {
                 case VehicleClass.Sedan:
                     PriceMultiplier = 5;

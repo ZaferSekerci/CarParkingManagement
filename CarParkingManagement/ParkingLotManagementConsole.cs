@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace CarParkingManagement
 {
@@ -18,6 +12,7 @@ namespace CarParkingManagement
         private ParkingLot leventParking;
         private Car car;
         private Customer customer;
+        private DataGridViewRow selectedCarRow = new DataGridViewRow();
 
         //List<CarViewModel> carViewModel = new List<CarViewModel>();
 
@@ -37,47 +32,77 @@ namespace CarParkingManagement
             }
 
             leventParking.ParkingLotName = "Levent Parking";
-            leventParking.MaximumCarCapacity = 5;
+            leventParking.MaximumCarCapacity = 50;
 
-            
+
 
             label7.Text = leventParking.ParkingLotName;
-            textBox1.Text = leventParking.MaximumCarCapacity.ToString();
+            txtEmptyParkSlot.Text = leventParking.MaximumCarCapacity.ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
 
-            car.Plate = maskedTextBox1.Text;
+        private void btnSaveCustomer_Click(object sender, EventArgs e)
+        {
+            car.Plate = mtxtCarPlate.Text;
             car.VehicleClass = (VehicleClass)cmbCarType.SelectedItem;
 
 
 
-            customer.EntryTime = dateTimePicker1.Value;
+            customer.EntryTime = dtpCheckInTime.Value;
             customer.Car = car;
 
-            leventParking.MaximumCarCapacity -= 1;
-            textBox1.Text = leventParking.MaximumCarCapacity.ToString(); 
-            cmbCarPlate.Items.Add(customer.Car.Plate);           
+            leventParking.TotalIncome = dgvListOfInsideCars.Rows.Count;
 
-            dataGridView1.Rows.Add(customer.Car.Plate,customer.EntryTime,customer.Car.VehicleClass);
-            //carViewModel.Add(cvm);
+            txtEmptyParkSlot.Text = (leventParking.MaximumCarCapacity - leventParking.TotalIncome).ToString();
+
+            dgvListOfInsideCars.Rows.Add(customer.Car.Plate, customer.EntryTime, customer.Car.VehicleClass);
+
+            gbEntrySection.Enabled = leventParking.CheckAvailability();
+            gbEntrySection.BackColor = Color.FromName(leventParking.CapacityCustomerRatio());
+
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnCalculateParkingPrice_Click(object sender, EventArgs e)
         {
-            customer.Car.Plate = cmbCarPlate.SelectedText;
+            if (dgvListOfInsideCars.SelectedRows.Count != 0)
+            {
 
-            customer.ExitTime = dateTimePicker2.Value;
-            
-            
-            PriceList priceList = new PriceList(customer.Car.VehicleClass);
+                customer.ExitTime = dtpCheckOutTime.Value;
 
-            Billing billing = new Billing(customer,priceList);
+                PriceList priceList = new PriceList(customer.Car);
 
-            MessageBox.Show(billing.TotalPrice.ToString());
+                Billing billing = new Billing(customer, priceList);
+
+                //MessageBox.Show(billing.TotalPrice.ToString());
+                
+                DialogResult result = MessageBox.Show("Total payment of the vehicle below informations " +
+                                    billing.TotalPrice.ToString() + " TL\n" +
+                                    customer.Car.VehicleClass.ToString() +
+                                    " " + customer.Car.Plate,"Bill Calculation",MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+                    dgvListOfInsideCars.Rows.RemoveAt(selectedCarRow.Index);
+                    leventParking.TotalIncome++;
+                }
+
+                
+
+            }
+            else
+            {
+                MessageBox.Show("Please select a customer from list");
+            }
+
+        }
+
+        private void dgvListOfInsideCars_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            selectedCarRow = dgvListOfInsideCars.SelectedRows[0];
+            customer.Car.Plate = selectedCarRow.Cells["CarPlate"].Value.ToString();
+            customer.Car.VehicleClass = (VehicleClass)Enum.Parse(typeof(VehicleClass), selectedCarRow.Cells["CarType"].Value.ToString());
         }
     }
 }
