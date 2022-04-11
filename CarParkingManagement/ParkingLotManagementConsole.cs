@@ -24,6 +24,12 @@ namespace CarParkingManagement
             InitializeComponent();
         }
 
+        private void UpdateSlot()
+        {
+            txtEmptyParkSlot.Text = leventParking.MaximumCarCapacity.ToString();
+
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             foreach (var item in Enum.GetValues(typeof(VehicleClass)))
@@ -34,10 +40,9 @@ namespace CarParkingManagement
             leventParking.ParkingLotName = "Levent Parking";
             leventParking.MaximumCarCapacity = 50;
 
-
+            UpdateSlot();   
 
             label7.Text = leventParking.ParkingLotName;
-            txtEmptyParkSlot.Text = leventParking.MaximumCarCapacity.ToString();
         }
 
 
@@ -53,7 +58,7 @@ namespace CarParkingManagement
 
             leventParking.TotalIncome = dgvListOfInsideCars.Rows.Count;
 
-            txtEmptyParkSlot.Text = (leventParking.MaximumCarCapacity - leventParking.TotalIncome).ToString();
+            UpdateSlot();
 
             dgvListOfInsideCars.Rows.Add(customer.Car.Plate, customer.EntryTime, customer.Car.VehicleClass);
 
@@ -85,6 +90,8 @@ namespace CarParkingManagement
                 {
                     dgvListOfInsideCars.Rows.RemoveAt(selectedCarRow.Index);
                     leventParking.TotalIncome++;
+                    UpdateSlot();
+
                 }
 
                 

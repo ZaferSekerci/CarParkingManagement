@@ -14,11 +14,12 @@ namespace CarParkingManagement
         public Billing(Customer customer,PriceList priceList)
         {
             PriceMultiplier = priceList.PriceMultiplier;
-            TimeSpan TotalHourSpent = customer.ExitTime - customer.EntryTime;
-            TotalPrice = TotalHourSpent.Minutes * PriceMultiplier;
+            TimeSpan SpentTime = customer.ExitTime - customer.EntryTime;
+            int TotalHours = ((int)SpentTime.TotalDays * 24) + ((int)SpentTime.TotalHours) + ((int)SpentTime.TotalSeconds > 30 ? 1 : 0);
+            TotalPrice = TotalHours.ToString();
         }
         public int PriceMultiplier { get; set; }
-        public decimal TotalPrice { get; set; }
+        public string TotalPrice { get; set; }
 
         //public decimal CalculateBill(DateTime exitTime)
         //{

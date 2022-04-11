@@ -124,7 +124,7 @@ namespace CarParkingManagement
             // 
             // dtpCheckInTime
             // 
-            this.dtpCheckInTime.CustomFormat = "dd.mm.yyyy HH:mm";
+            this.dtpCheckInTime.CustomFormat = "dd.MM.yyyy HH:mm";
             this.dtpCheckInTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpCheckInTime.Location = new System.Drawing.Point(101, 59);
             this.dtpCheckInTime.Name = "dtpCheckInTime";
@@ -174,7 +174,7 @@ namespace CarParkingManagement
             // 
             // dtpCheckOutTime
             // 
-            this.dtpCheckOutTime.CustomFormat = "dd.mm.yyyy HH:mm";
+            this.dtpCheckOutTime.CustomFormat = "dd.MM.yyyy HH:mm";
             this.dtpCheckOutTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpCheckOutTime.Location = new System.Drawing.Point(101, 180);
             this.dtpCheckOutTime.Name = "dtpCheckOutTime";
