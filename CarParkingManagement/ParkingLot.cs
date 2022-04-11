@@ -10,15 +10,10 @@ namespace CarParkingManagement
     {
         public bool CheckAvailability()
         {
-            if (TotalIncome == MaximumCarCapacity)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return TotalIncome != MaximumCarCapacity;
         }
+
+
         public string CapacityCustomerRatio()
         {
             if (TotalIncome >= MaximumCarCapacity * 0.5m)

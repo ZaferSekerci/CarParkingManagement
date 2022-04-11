@@ -23,7 +23,7 @@ namespace CarParkingManagement
             InitializeComponent();
         }
 
-        private void UpdateParkingSlots()
+        private void UpdateParkingSlots() //parking lot sınıfına gitme
         {
             leventParking.TotalIncome=dgvListOfInsideCars.Rows.Count;
             txtEmptyParkSlot.Text = Convert.ToInt32(leventParking.MaximumCarCapacity - leventParking.TotalIncome).ToString();
