@@ -14,7 +14,6 @@ namespace CarParkingManagement
         private Customer customer;
         private DataGridViewRow selectedCarRow = new DataGridViewRow();
 
-        //List<CarViewModel> carViewModel = new List<CarViewModel>();
 
         public ParkingLotManagementConsole()
         {
@@ -24,9 +23,10 @@ namespace CarParkingManagement
             InitializeComponent();
         }
 
-        private void UpdateSlot()
+        private void UpdateParkingSlots()
         {
-            txtEmptyParkSlot.Text = leventParking.MaximumCarCapacity.ToString();
+            leventParking.TotalIncome=dgvListOfInsideCars.Rows.Count;
+            txtEmptyParkSlot.Text = Convert.ToInt32(leventParking.MaximumCarCapacity - leventParking.TotalIncome).ToString();
 
         }
 
@@ -36,11 +36,9 @@ namespace CarParkingManagement
             {
                 cmbCarType.Items.Add(item);
             }
-
             leventParking.ParkingLotName = "Levent Parking";
             leventParking.MaximumCarCapacity = 50;
-
-            UpdateSlot();   
+            UpdateParkingSlots();   
 
             label7.Text = leventParking.ParkingLotName;
         }
@@ -51,26 +49,26 @@ namespace CarParkingManagement
             car.Plate = mtxtCarPlate.Text;
             car.VehicleClass = (VehicleClass)cmbCarType.SelectedItem;
 
-
-
             customer.EntryTime = dtpCheckInTime.Value;
             customer.Car = car;
 
-            leventParking.TotalIncome = dgvListOfInsideCars.Rows.Count;
-
-            UpdateSlot();
+            
 
             dgvListOfInsideCars.Rows.Add(customer.Car.Plate, customer.EntryTime, customer.Car.VehicleClass);
 
+            UpdateParkingSlots();
+
+            leventParking.TotalIncome = dgvListOfInsideCars.Rows.Count;
             gbEntrySection.Enabled = leventParking.CheckAvailability();
             gbEntrySection.BackColor = Color.FromName(leventParking.CapacityCustomerRatio());
+
 
 
         }
 
         private void btnCalculateParkingPrice_Click(object sender, EventArgs e)
         {
-            if (dgvListOfInsideCars.SelectedRows.Count != 0)
+            if (dgvListOfInsideCars.SelectedCells.Count != 0)
             {
 
                 customer.ExitTime = dtpCheckOutTime.Value;
@@ -79,7 +77,6 @@ namespace CarParkingManagement
 
                 Billing billing = new Billing(customer, priceList);
 
-                //MessageBox.Show(billing.TotalPrice.ToString());
                 
                 DialogResult result = MessageBox.Show("Total payment of the vehicle below informations " +
                                     billing.TotalPrice.ToString() + " TL\n" +
@@ -90,11 +87,10 @@ namespace CarParkingManagement
                 {
                     dgvListOfInsideCars.Rows.RemoveAt(selectedCarRow.Index);
                     leventParking.TotalIncome++;
-                    UpdateSlot();
+                    UpdateParkingSlots();
 
                 }
 
-                
 
             }
             else
