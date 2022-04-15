@@ -85,7 +85,6 @@
             this.btnCalculateParkingPrice.TabIndex = 7;
             this.btnCalculateParkingPrice.Text = "Calculate Parking Price";
             this.btnCalculateParkingPrice.UseVisualStyleBackColor = true;
-            this.btnCalculateParkingPrice.Click += new System.EventHandler(this.btnCalculateParkingPrice_Click);
             // 
             // dtpCheckOutTime
             // 
@@ -125,7 +124,6 @@
             this.dgvListOfInsideCars.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListOfInsideCars.Size = new System.Drawing.Size(367, 149);
             this.dgvListOfInsideCars.TabIndex = 2;
-            this.dgvListOfInsideCars.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListOfInsideCars_CellContentClick);
             // 
             // CarPlate
             // 
@@ -191,7 +189,6 @@
             this.btnSaveCustomer.TabIndex = 6;
             this.btnSaveCustomer.Text = "Save Customer";
             this.btnSaveCustomer.UseVisualStyleBackColor = true;
-            this.btnSaveCustomer.Click += new System.EventHandler(this.btnSaveCustomer_Click);
             // 
             // cmbCarType
             // 
@@ -254,7 +251,6 @@
             this.Controls.Add(this.gbEntrySection);
             this.Name = "ParkingLotManagementConsole";
             this.Text = "Parking Lot Management Console";
-            this.Load += new System.EventHandler(this.ParkingLotManagementConsole_Load);
             this.gbPaymentSection.ResumeLayout(false);
             this.gbPaymentSection.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListOfInsideCars)).EndInit();
