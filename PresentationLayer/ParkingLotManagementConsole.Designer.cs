@@ -58,7 +58,7 @@
             this.label7.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(12, 212);
+            this.label7.Location = new System.Drawing.Point(28, 212);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 30);
             this.label7.TabIndex = 6;
