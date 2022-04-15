@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32228.343
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarParkingManagement", "CarParkingManagement\CarParkingManagement.csproj", "{B8596E73-F87B-417D-8759-9395D01B7C1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarParkingManagement", "CarParkingManagement\CarParkingManagement.csproj", "{B8596E73-F87B-417D-8759-9395D01B7C1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer", "PresentationLayer\PresentationLayer.csproj", "{248AC07F-B0B0-4185-8FAB-FAE5C885E9E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{856E2C24-8FA0-420D-BD86-626EDC8BDA89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{59F5FE0A-FF8B-4EFF-8575-30C430FE7CED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{B8596E73-F87B-417D-8759-9395D01B7C1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8596E73-F87B-417D-8759-9395D01B7C1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8596E73-F87B-417D-8759-9395D01B7C1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{248AC07F-B0B0-4185-8FAB-FAE5C885E9E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{248AC07F-B0B0-4185-8FAB-FAE5C885E9E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{248AC07F-B0B0-4185-8FAB-FAE5C885E9E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{248AC07F-B0B0-4185-8FAB-FAE5C885E9E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{856E2C24-8FA0-420D-BD86-626EDC8BDA89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{856E2C24-8FA0-420D-BD86-626EDC8BDA89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{856E2C24-8FA0-420D-BD86-626EDC8BDA89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{856E2C24-8FA0-420D-BD86-626EDC8BDA89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59F5FE0A-FF8B-4EFF-8575-30C430FE7CED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59F5FE0A-FF8B-4EFF-8575-30C430FE7CED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59F5FE0A-FF8B-4EFF-8575-30C430FE7CED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59F5FE0A-FF8B-4EFF-8575-30C430FE7CED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
